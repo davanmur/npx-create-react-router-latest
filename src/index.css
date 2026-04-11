@@ -1,0 +1,36 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f1efea;
+  --color-border: rgba(0, 0, 0, 0.15);
+  --color-text: #1a1a19;
+  --color-text-muted: #73726c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1a1a19;
+    --color-surface: #2a2a28;
+    --color-border: rgba(255, 255, 255, 0.15);
+    --color-text: #e8e6dc;
+    --color-text-muted: #9c9a92;
+  }
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
