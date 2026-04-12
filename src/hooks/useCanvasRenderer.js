@@ -4,13 +4,14 @@ import { RANK_COLORS } from "../data/taxonomy";
 const isDark = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
 
 function getTheme() {
-  const dark = isDark();
+  // const dark = isDark();
+  const dark = false;
   return {
     bg: dark ? "#1a1a19" : "#ffffff",
     line: dark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.12)",
-    textPri: dark ? "#e8e6dc" : "#1a1a19",
+    textPri: dark ? "#e8e6dc" : "#e8e6dc",
     textSec: dark ? "#9c9a92" : "#73726c",
-    nodeBg: dark ? "#2a2a28" : "#f1efea",
+    nodeBg: dark ? "#3a9142" : "#3a9142",
     nodeBorder: dark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.15)",
   };
 }
@@ -35,7 +36,7 @@ export function useCanvasRenderer({ canvasRef, nodes, edges, transform, selected
     const { width: W, height: H } = canvas;
     const { tx, ty, scale } = transform;
     const theme = getTheme();
-    const HIGHLIGHT = "#7F77DD";
+    const HIGHLIGHT = "#b3deba";
 
     ctx.clearRect(0, 0, W, H);
     ctx.save();
@@ -76,24 +77,25 @@ export function useCanvasRenderer({ canvasRef, nodes, edges, transform, selected
       ctx.stroke();
 
       // Rank color dot
-      ctx.fillStyle = color;
-      ctx.beginPath();
-      ctx.arc(n.x + 10 / scale, n.y + n.h / 2, 5 / scale, 0, Math.PI * 2);
-      ctx.fill();
+      // ctx.fillStyle = color;
+      // ctx.beginPath();
+      // ctx.arc(n.x + 10 / scale, n.y + n.h / 2, 5 / scale, 0, Math.PI * 2);
+      // ctx.fill();
 
       // Label
       ctx.fillStyle = isSelected ? HIGHLIGHT : theme.textPri;
-      ctx.font = `${isSelected ? 500 : 400} ${11 / scale}px system-ui, sans-serif`;
+      ctx.font = `${isSelected ? 500 : 400} 14px "DM Sans", system-ui, sans-serif`;
       ctx.textBaseline = "middle";
-      ctx.textAlign = "left";
+      ctx.textAlign = "center";
       const label = n.name.length > 16 ? n.name.slice(0, 15) + "…" : n.name;
-      ctx.fillText(label, n.x + 20 / scale, n.y + n.h / 2);
+      ctx.fillText(label, n.x + n.w / 2, n.y + n.h / 2);
 
       // Collapse toggle
       if (hasChildren) {
         ctx.fillStyle = theme.textSec;
         ctx.font = `${10 / scale}px sans-serif`;
         ctx.textAlign = "center";
+        ctx.cursor = "pointer";
         const toggleX = n.x + n.w - 8 / scale;
         ctx.fillText(
           n._collapsed ? "+" : "−",

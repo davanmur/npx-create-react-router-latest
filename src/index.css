@@ -5,7 +5,7 @@
 }
 
 :root {
-  --color-bg: #ffffff;
+  --color-bg: #ceebb5;
   --color-surface: #f1efea;
   --color-border: rgba(0, 0, 0, 0.15);
   --color-text: #1a1a19;
@@ -14,11 +14,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #1a1a19;
-    --color-surface: #2a2a28;
-    --color-border: rgba(255, 255, 255, 0.15);
-    --color-text: #e8e6dc;
-    --color-text-muted: #9c9a92;
+    --color-bg: #ceebb5;
+    --color-surface: #d7f3be;
+    --color-border: #2a2a2a;
+    --color-text: #383938;
+    --color-text-muted: #565550;
   }
 }
 
@@ -31,6 +31,14 @@ html, body, #root {
 body {
   background: var(--color-bg);
   color: var(--color-text);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: "DM Sans", sans-serif !important;
   -webkit-font-smoothing: antialiased;
+}
+
+input, button, textarea, select {
+  font-family: "DM Sans", sans-serif;
+}
+
+button {
+  
 }

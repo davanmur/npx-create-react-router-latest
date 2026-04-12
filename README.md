@@ -1,4 +1,4 @@
-# Plant Taxonomy Tree
+# Archivum
 
 An interactive plant taxonomy browser built with React + Vite. Features zoom/pan canvas rendering, collapsible nodes, search/highlight, and AI-powered plant classification via the Anthropic API.
 
@@ -17,6 +17,11 @@ npm run dev
 ```
 
 Then open http://localhost:5173 in your browser.
+
+## Styles
+
+DM Sans: https://fonts.google.com/specimen/DM+Sans?preview.script=Latn
+
 
 ## Getting an API key
 
